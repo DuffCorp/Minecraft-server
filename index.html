@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ballsnia — Install</title>
+<style>
+  :root{
+    --blue:#002f87; --blue2:#0a3fa0; --yellow:#fcd116; --bg:#0e1116; --card:#171c24;
+    --ink:#e8edf4; --muted:#9aa6b6; --line:#252c38; --ok:#3fb950;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+  a{color:var(--yellow)}
+  .wrap{max-width:760px;margin:0 auto;padding:24px}
+  header{text-align:center;padding:36px 0 12px}
+  header img{width:120px;height:120px;image-rendering:auto}
+  h1{margin:14px 0 4px;font-size:34px;letter-spacing:.5px}
+  .tag{color:var(--muted);margin:0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
+  .addr{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+  code{background:#0b0f14;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:15px}
+  .copy{cursor:pointer;background:var(--blue2);border:0;color:#fff;border-radius:8px;padding:7px 12px;font-size:14px}
+  .copy:hover{background:#1450c0}
+  .dl{display:block;text-align:center;background:var(--yellow);color:#1a1a1a;font-weight:700;
+    text-decoration:none;border-radius:12px;padding:16px;font-size:18px;margin:6px 0}
+  .dl:hover{filter:brightness(1.05)}
+  .dl small{display:block;font-weight:400;color:#3a3a1a;font-size:13px;margin-top:2px}
+  h2{font-size:20px;margin:26px 0 10px;border-left:4px solid var(--yellow);padding-left:10px}
+  ol{padding-left:22px} li{margin:8px 0}
+  .muted{color:var(--muted);font-size:14px}
+  .warn{background:#1d1710;border:1px solid #4a3a14;border-radius:10px;padding:14px 16px}
+  .req{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;color:var(--muted);font-size:14px}
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 0}
+  kbd{background:#0b0f14;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="assets/ballsnia-icon.png" alt="Ballsnia">
+    <h1>Ballsnia</h1>
+    <p class="tag">🇧🇦 The Bosnian Pokémon server — Cobblemon, Create &amp; more</p>
+  </header>
+
+  <div class="card addr">
+    <span class="muted">Server address:</span>
+    <code id="ip">ballsnia.jack-duffy.com:25565</code>
+    <button class="copy" onclick="navigator.clipboard.writeText('ballsnia.jack-duffy.com:25565');this.textContent='Copied!'">Copy</button>
+  </div>
+
+  <a class="dl" href="download/Ballsnia-Prism.zip" download>
+    ⬇ Download the Ballsnia pack
+    <small>Prism Launcher instance — auto-updates every launch</small>
+  </a>
+  <p class="req">Needs: <span>Prism Launcher</span> · <span>Java 21</span> · <span>~8&nbsp;GB RAM free</span></p>
+
+  <h2>Install (about 10 minutes, once)</h2>
+  <ol>
+    <li><b>Install Prism Launcher</b> — <a href="https://prismlauncher.org/">prismlauncher.org</a>. Sign in with your Microsoft/Minecraft account.</li>
+    <li><b>Install Java 21</b> — <a href="https://adoptium.net/">adoptium.net</a> (Temurin 21). In Prism: <kbd>Settings → Java → Auto-detect</kbd> and pick the Java 21 entry.</li>
+    <li><b>Download the pack</b> (button above). <b>Don't unzip it.</b></li>
+    <li><b>Import it</b> — in Prism: <kbd>Add Instance → Import → choose the ZIP</kbd>.</li>
+    <li><b>RAM is pre-set</b> to 8–10&nbsp;GB. Only if your PC has 8&nbsp;GB total, lower it: right-click → <kbd>Edit → Settings → Memory</kbd>.</li>
+    <li><b>Launch it.</b> The updater runs first — let it finish, then the game opens.</li>
+    <li><b>Join</b> — open <kbd>Multiplayer</kbd>: <b>Ballsnia is already in your server list</b>. Just select it and click <b>Join Server</b>.</li>
+  </ol>
+  <p class="muted">After this, you never re-download — just launch the instance and it auto-updates before the game opens.</p>
+
+  <h2>Good to know</h2>
+  <ul>
+    <li><b>Distant Horizons &amp; shaders</b> are optional/client-side. Toggle them in <kbd>Edit Instance → Mods</kbd> and <kbd>Options → Video Settings → Shader Packs</kbd>. This pack uses Iris/Sodium — <b>don't install OptiFine</b>, it'll break things.</li>
+    <li><b>Pokémon on the minimap</b>: <kbd>Options → Resource Packs</kbd> → enable <b>Mini's Cobblemon Icons</b> (already included).</li>
+  </ul>
+
+  <div class="warn">
+    <b>If you get a "mod mismatch" / "incompatible mod set" error:</b> close Minecraft, open Prism,
+    launch the pack again and let the updater finish, then rejoin. Still stuck? Delete the instance and re-import the ZIP.
+  </div>
+
+  <footer>Ballsnia · made for the groupchat · you must be whitelisted to join — ask Jack</footer>
+</div>
+</body>
+</html>

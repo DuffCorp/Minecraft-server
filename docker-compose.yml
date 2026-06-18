@@ -39,7 +39,9 @@ services:
       #   Host 32GB  -> "18G"   (16-20G)
       #   Host 64GB  -> "28G"   (24-32G)
       #   Host 128GB -> "40G"   (32-48G; one JVM rarely benefits past ~32G)
-      MEMORY: "12G"            # 12G for MC, ~4G left for the OS on a 16G host
+      MEMORY: "8G"             # heap. Host is 16G but ~5G is used by other Coolify apps+OS,
+                               # and JVM overhead adds ~2-3G on top, so 8G is the safe ceiling here.
+                               # 12G got OOM-killed (exit 137). Don't exceed ~9-10G on this box.
       USE_AIKAR_FLAGS: "TRUE"   # optimized GC flags - big perf win for modded servers
       MAX_PLAYERS: "10"
       ONLINE_MODE: "TRUE"

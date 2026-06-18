@@ -18,7 +18,8 @@ param(
     [string]$PackUrl,
     [int]$MinMemMB = 8192,
     [int]$MaxMemMB = 10240,
-    [string]$InstanceName = "Ballsnia"
+    [string]$InstanceName = "Ballsnia",
+    [string]$ServerAddress = "ballsnia.jack-duffy.com:25565"
 )
 
 $ErrorActionPreference = "Stop"
@@ -117,6 +118,26 @@ if ($rpFiles.Count -gt 0) {
     Write-Host "==> Pre-enabled resource packs: $($rpFiles -join ', ')" -ForegroundColor Cyan
 }
 
+# Pre-add the server to the multiplayer list (servers.dat = raw, UNcompressed NBT).
+if (-not [string]::IsNullOrWhiteSpace($ServerAddress)) {
+    $enc = [System.Text.Encoding]::UTF8
+    $nm = $enc.GetBytes($InstanceName)
+    $ip = $enc.GetBytes($ServerAddress)
+    $d  = New-Object System.Collections.Generic.List[byte]
+    foreach ($x in 10,0,0)  { $d.Add([byte]$x) }                                     # root TAG_Compound, empty name
+    $d.Add([byte]9); $d.Add([byte]0); $d.Add([byte]7); $d.AddRange($enc.GetBytes("servers"))  # TAG_List "servers"
+    $d.Add([byte]10)                                                                 # list element type = TAG_Compound
+    foreach ($x in 0,0,0,1) { $d.Add([byte]$x) }                                     # list length = 1
+    $d.Add([byte]8); $d.Add([byte]0); $d.Add([byte]4); $d.AddRange($enc.GetBytes("name"))     # TAG_String "name"
+    $d.Add([byte](($nm.Length -shr 8) -band 0xFF)); $d.Add([byte]($nm.Length -band 0xFF)); $d.AddRange($nm)
+    $d.Add([byte]8); $d.Add([byte]0); $d.Add([byte]2); $d.AddRange($enc.GetBytes("ip"))       # TAG_String "ip"
+    $d.Add([byte](($ip.Length -shr 8) -band 0xFF)); $d.Add([byte]($ip.Length -band 0xFF)); $d.AddRange($ip)
+    $d.Add([byte]0)                                                                  # TAG_End (element)
+    $d.Add([byte]0)                                                                  # TAG_End (root)
+    [System.IO.File]::WriteAllBytes((Join-Path $mcDir "servers.dat"), $d.ToArray())
+    Write-Host "==> Pre-added server '$InstanceName' -> $ServerAddress" -ForegroundColor Cyan
+}
+
 # --- Zip it (contents at the zip root) ---------------------------------------
 $zip = Join-Path $DistDir "$InstanceName-Prism.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }
@@ -128,6 +149,12 @@ $items = @(
 )
 Compress-Archive -Path $items -DestinationPath $zip -Force
 Remove-Item $build -Recurse -Force
+
+# Publish a copy into download/ so GitHub Pages serves it for the friend install page
+$pub = Join-Path $repo "download"
+New-Item -ItemType Directory -Force -Path $pub | Out-Null
+Copy-Item $zip (Join-Path $pub "$InstanceName-Prism.zip") -Force
+Write-Host "==> Published download\$InstanceName-Prism.zip (commit + push so the install page can serve it)" -ForegroundColor Cyan
 
 Write-Host "`n=============================================================" -ForegroundColor Green
 Write-Host " Built: $zip" -ForegroundColor Green

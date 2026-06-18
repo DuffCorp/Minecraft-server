@@ -2,6 +2,8 @@
 dist/
 *.mrpack
 *.zip
+# ...but DO commit the published friend instance — GitHub Pages serves it as the download
+!download/*.zip
 
 # Prism / test instance leftovers
 .minecraft/
