@@ -39,7 +39,8 @@ services:
       #   Host 32GB  -> "18G"   (16-20G)
       #   Host 64GB  -> "28G"   (24-32G)
       #   Host 128GB -> "40G"   (32-48G; one JVM rarely benefits past ~32G)
-      MEMORY: "8G"
+      MEMORY: "12G"            # 12G for MC, ~4G left for the OS on a 16G host
+      USE_AIKAR_FLAGS: "TRUE"   # optimized GC flags - big perf win for modded servers
       MAX_PLAYERS: "10"
       ONLINE_MODE: "TRUE"
 
