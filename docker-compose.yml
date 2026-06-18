@@ -46,19 +46,19 @@ services:
       # --- Whitelist: only named friends can join -----------------------------
       ENABLE_WHITELIST: "TRUE"     # turns the whitelist on
       ENFORCE_WHITELIST: "TRUE"    # kicks anyone not on the list, even mid-session
-      OPS: "YourMinecraftUsername" # >>> your username — becomes a server operator
+      OPS: "DuffCorp" # your username - becomes a server operator
 
       MOTD: "Ballsnia | Bosanski Cobblemon SMP"  # >>> shown in the multiplayer list
 
       # --- Server icon: the Bosnian Pokeball shown in the multiplayer list ----
       # itzg downloads this and scales it to 64x64. Uses assets/server-icon.png
-      # committed to your pack repo. >>> Replace YOUR_USERNAME (and branch if not main).
-      ICON: "https://raw.githubusercontent.com/YOUR_USERNAME/ballsnia-pack/main/assets/server-icon.png"
+      # committed to the pack repo (duffcorp/Minecraft-server, branch main).
+      ICON: "https://raw.githubusercontent.com/duffcorp/Minecraft-server/main/assets/server-icon.png"
       OVERRIDE_ICON: "TRUE"
 
       # --- Auto-install matching server mods from your packwiz pack -----------
-      # >>> Replace YOUR_USERNAME. Note the pack lives in the pack/ folder.
-      PACKWIZ_URL: "https://YOUR_USERNAME.github.io/ballsnia-pack/pack/pack.toml"
+      # Pack lives in the pack/ folder on GitHub Pages (duffcorp/Minecraft-server).
+      PACKWIZ_URL: "https://duffcorp.github.io/Minecraft-server/pack/pack.toml"
 
       VIEW_DISTANCE: "8"
       SIMULATION_DISTANCE: "6"
