@@ -1,0 +1,13 @@
+name = "Mini's Cobblemon Icons"
+filename = "Mini's Cobblemon 1.7 Icons v2.1.zip"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/iIIbkTgO/versions/IHd7v19y/Mini%27s%20Cobblemon%201.7%20Icons%20v2.1.zip"
+hash-format = "sha512"
+hash = "9bbe79a9eba9c5faa56ea7e439324882e46813b583201b3307e0abe2d55c534bd0c9120848e4f114e840b4c6b12e9f018eb73cd71a349f600d9bb4b1c44fd07a"
+
+[update]
+[update.modrinth]
+mod-id = "iIIbkTgO"
+version = "IHd7v19y"

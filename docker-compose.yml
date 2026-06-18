@@ -1,0 +1,72 @@
+# =============================================================================
+#  Ballsnia  -  Bosnian Cobblemon server  -  Coolify Docker Compose
+# =============================================================================
+#  Paste this into Coolify:  New Resource  ->  Docker Compose.
+#
+#  It runs a NeoForge 1.21.1 server using the itzg/minecraft-server image and
+#  auto-installs the SERVER-side mods straight from your packwiz pack.toml
+#  (the PACKWIZ_URL below). Client-only mods (shaders, minimap, Distant
+#  Horizons) are skipped automatically because they are marked `side = "client"`
+#  in the pack — see scripts/build-pack.ps1.
+#
+#  BEFORE DEPLOYING, edit the three >>> PLACEHOLDER <<< values:
+#    - OPS              your Minecraft (Microsoft account) username
+#    - MOTD             the name shown in the server list (optional)
+#    - PACKWIZ_URL      your GitHub Pages pack.toml URL (see README Step 7)
+# =============================================================================
+
+services:
+  ballsnia:
+    image: itzg/minecraft-server:java21
+    container_name: ballsnia
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+    ports:
+      - "25565:25565"
+
+    environment:
+      EULA: "TRUE"
+      TYPE: "NEOFORGE"
+      VERSION: "1.21.1"
+
+      # MEMORY = RAM given to the server JVM. Pick by your VPS/host RAM (leave
+      # headroom for the OS - never allocate 100%). For a ~10-player Cobblemon
+      # + Create server:
+      #   Host 8GB   -> "6G"
+      #   Host 16GB  -> "10G"   (10-12G)
+      #   Host 32GB  -> "18G"   (16-20G)
+      #   Host 64GB  -> "28G"   (24-32G)
+      #   Host 128GB -> "40G"   (32-48G; one JVM rarely benefits past ~32G)
+      MEMORY: "8G"
+      MAX_PLAYERS: "10"
+      ONLINE_MODE: "TRUE"
+
+      # --- Whitelist: only named friends can join -----------------------------
+      ENABLE_WHITELIST: "TRUE"     # turns the whitelist on
+      ENFORCE_WHITELIST: "TRUE"    # kicks anyone not on the list, even mid-session
+      OPS: "YourMinecraftUsername" # >>> your username — becomes a server operator
+
+      MOTD: "Ballsnia | Bosanski Cobblemon SMP"  # >>> shown in the multiplayer list
+
+      # --- Server icon: the Bosnian Pokeball shown in the multiplayer list ----
+      # itzg downloads this and scales it to 64x64. Uses assets/server-icon.png
+      # committed to your pack repo. >>> Replace YOUR_USERNAME (and branch if not main).
+      ICON: "https://raw.githubusercontent.com/YOUR_USERNAME/ballsnia-pack/main/assets/server-icon.png"
+      OVERRIDE_ICON: "TRUE"
+
+      # --- Auto-install matching server mods from your packwiz pack -----------
+      # >>> Replace YOUR_USERNAME. Note the pack lives in the pack/ folder.
+      PACKWIZ_URL: "https://YOUR_USERNAME.github.io/ballsnia-pack/pack/pack.toml"
+
+      VIEW_DISTANCE: "8"
+      SIMULATION_DISTANCE: "6"
+      ALLOW_FLIGHT: "TRUE"
+      ENABLE_COMMAND_BLOCK: "TRUE"
+
+    volumes:
+      - ballsnia-data:/data
+
+volumes:
+  ballsnia-data:

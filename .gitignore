@@ -1,0 +1,18 @@
+# Exported pack artifacts (regenerate with scripts/export-mrpack.ps1)
+dist/
+*.mrpack
+*.zip
+
+# Prism / test instance leftovers
+.minecraft/
+instance.cfg
+mmc-pack.json
+
+# packwiz installer bootstrap (download fresh per README Step 5)
+packwiz-installer-bootstrap.jar
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

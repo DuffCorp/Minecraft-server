@@ -1,0 +1,13 @@
+name = "Cobblemon Gym Badges"
+filename = "cgb-1.21.1-1.0.12.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/fjZQsOcn/versions/9REJkc7M/cgb-1.21.1-1.0.12.jar"
+hash-format = "sha512"
+hash = "fe85a1921f2a531d29aa32356bc2829158ffbc1a843467e702fec397bd1c1f598e7c4584258eff2c5c6a32ca0348b01a7c3b10b0f0e42782a3fb2c055a56df1c"
+
+[update]
+[update.modrinth]
+mod-id = "fjZQsOcn"
+version = "9REJkc7M"
