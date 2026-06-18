@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ballsnia — Guides &amp; resources</title>
+<meta name="description" content="Useful links and getting-started tips for Cobblemon and Create on the Ballsnia server.">
+<link rel="icon" href="assets/server-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a2a6b; --navy-deep:#061d52; --bright:#2f6be0; --yellow:#ffcf1a;
+    --red:#ee2b2b; --white:#fff; --ink:#0c1730; --shadow:0 18px 40px -18px rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Nunito",sans-serif;color:#fff;line-height:1.65;
+    background:
+      radial-gradient(900px 500px at 85% -5%, rgba(255,207,26,.18), transparent 60%),
+      radial-gradient(700px 500px at 8% 12%, rgba(238,43,43,.16), transparent 55%),
+      linear-gradient(160deg,#0c2f78 0%,var(--navy) 38%,var(--navy-deep) 100%);
+    background-attachment:fixed;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;z-index:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1.4px,transparent 1.4px);background-size:26px 26px}
+  .wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:24px 22px 60px}
+  h1,h2,h3,.display{font-family:"Fredoka",sans-serif;font-weight:700;letter-spacing:.3px}
+  .back{display:inline-flex;align-items:center;gap:8px;color:#cdd9f4;text-decoration:none;
+    font-weight:800;font-size:15px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    padding:8px 14px;border-radius:999px;transition:.15s}
+  .back:hover{background:rgba(255,255,255,.16);transform:translateX(-2px)}
+  header{text-align:center;padding:26px 0 6px;animation:rise .6s ease both}
+  header img{width:74px;height:74px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.4))}
+  h1{font-size:clamp(34px,7vw,52px);margin:12px 0 4px}
+  .lead{color:#cdd9f4;font-weight:700;font-size:clamp(15px,2.4vw,18px)}
+  h2{font-size:clamp(22px,4.5vw,28px);margin:40px 0 4px;display:flex;align-items:center;gap:10px}
+  h2 .dot{width:12px;height:12px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 4px rgba(255,207,26,.2)}
+  .blurb{color:#bccaeb;margin:0 0 16px;font-weight:600}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:560px){.grid{grid-template-columns:1fr}}
+  .link{display:flex;gap:14px;align-items:flex-start;background:var(--white);color:var(--ink);
+    border-radius:18px;padding:18px;text-decoration:none;box-shadow:var(--shadow);transition:.16s;
+    animation:rise .55s ease both}
+  .link:hover{transform:translateY(-3px);box-shadow:0 26px 48px -18px rgba(0,0,0,.6)}
+  .link .ic{font-size:26px;flex:0 0 auto;line-height:1}
+  .link h3{font-size:17px;margin-bottom:2px;color:var(--ink)}
+  .link p{font-size:14px;color:#52607c;font-weight:600}
+  .link .go{display:block;margin-top:6px;font-size:13px;font-weight:800;color:var(--bright)}
+  .tipcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:20px;
+    padding:22px 24px;margin-top:6px}
+  .tipcard li{list-style:none;position:relative;padding-left:30px;margin:11px 0;color:#e3ebfb;font-size:15px}
+  .tipcard li::before{content:"⭐";position:absolute;left:0;top:0}
+  .tipcard b{color:var(--yellow)}
+  kbd{background:#0b1124;border:1px solid #2a3552;border-radius:6px;padding:1px 7px;font-family:"Nunito";
+    font-weight:700;font-size:13px;color:#dbe4fb;white-space:nowrap}
+  .soon{text-align:center;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.22);
+    border-radius:18px;padding:22px;margin-top:26px;color:#cdd9f4}
+  .soon h3{color:#fff;margin-bottom:6px;font-size:19px}
+  footer{text-align:center;color:#aab8d8;font-size:14px;padding:34px 0 6px}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">← Back to install</a>
+
+  <header>
+    <img src="assets/ballsnia-icon.png" alt="Ballsnia">
+    <h1>Guides &amp; resources</h1>
+    <p class="lead">New to Cobblemon or Create? Start here.</p>
+  </header>
+
+  <h2><span class="dot"></span>Cobblemon (the Pokémon part)</h2>
+  <p class="blurb">Catch, train and battle Pokémon in the overworld. The wiki has everything — spawns, evolutions, items.</p>
+  <div class="grid">
+    <a class="link" href="https://wiki.cobblemon.com/" target="_blank" rel="noopener">
+      <span class="ic">📖</span>
+      <span><h3>Cobblemon Wiki</h3><p>Spawns, stats, evolutions, items, breeding — the full reference.</p><span class="go">wiki.cobblemon.com →</span></span>
+    </a>
+    <a class="link" href="https://cobblemon.com/" target="_blank" rel="noopener">
+      <span class="ic">🌐</span>
+      <span><h3>Cobblemon Home</h3><p>Official site, news and the full Pokédex of what's in the mod.</p><span class="go">cobblemon.com →</span></span>
+    </a>
+  </div>
+
+  <h2><span class="dot"></span>Create (the machines part)</h2>
+  <p class="blurb">Build contraptions, factories and vehicles with rotating gears and belts. The best teacher is built right into the game.</p>
+  <div class="grid">
+    <a class="link" href="https://create.fandom.com/wiki/Create_Mod" target="_blank" rel="noopener">
+      <span class="ic">⚙️</span>
+      <span><h3>Create Wiki</h3><p>Every block and machine explained, with recipes and setups.</p><span class="go">create.fandom.com →</span></span>
+    </a>
+    <a class="link" href="https://www.youtube.com/results?search_query=create+mod+beginners+guide+1.21" target="_blank" rel="noopener">
+      <span class="ic">▶️</span>
+      <span><h3>Beginner videos</h3><p>10-minute "Create for beginners" walkthroughs — great to watch first.</p><span class="go">Watch on YouTube →</span></span>
+    </a>
+  </div>
+
+  <h2><span class="dot"></span>Your first day on Ballsnia</h2>
+  <div class="tipcard">
+    <ul>
+      <li><b>Catch Pokémon</b> — craft Poké Balls from <b>Apricorns</b> (they grow on trees). Weaken a wild Pokémon in battle, then throw.</li>
+      <li><b>Open the Pokédex</b> — we've got <b>Cobblepedia</b> in-game; check a Pokémon's spawn conditions before you go hunting.</li>
+      <li><b>Find them faster</b> — Pokémon show as icons on your <b>minimap</b> (already enabled). Press the minimap keys to look around.</li>
+      <li><b>Protect your base</b> — claim your area so nobody can grief it. Ask in chat and we'll point you to the claim tool.</li>
+      <li><b>Learn Create the easy way</b> — hover any Create item in your inventory and press <kbd>W</kbd> for <b>Ponder</b>, the built-in animated tutorial.</li>
+      <li><b>Be nice</b> — it's a friends server. No griefing, no stealing. Have fun. 🇧🇦</li>
+    </ul>
+  </div>
+
+  <div class="soon">
+    <h3>📋 Coming soon</h3>
+    A full <b>mod list</b> and an <b>FAQ</b> once everyone's had a chance to play and we know what people ask most.
+  </div>
+
+  <footer>Ballsnia · made for the groupchat · <a class="back" style="padding:5px 12px" href="index.html">← back to install</a></footer>
+</div>
+</body>
+</html>

@@ -3,84 +3,249 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ballsnia — Install</title>
+<title>Ballsnia — Join the server</title>
+<meta name="description" content="Join the Ballsnia Bosnian Pokémon server. One download, three steps, you're in.">
+<link rel="icon" href="assets/server-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blue:#002f87; --blue2:#0a3fa0; --yellow:#fcd116; --bg:#0e1116; --card:#171c24;
-    --ink:#e8edf4; --muted:#9aa6b6; --line:#252c38; --ok:#3fb950;
+    --navy:#0a2a6b; --navy-deep:#061d52; --bright:#2f6be0; --yellow:#ffcf1a;
+    --red:#ee2b2b; --white:#ffffff; --cream:#fff8ea; --ink:#0c1730; --muted:#5d6b86;
+    --shadow:0 18px 40px -18px rgba(0,0,0,.55);
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
-  a{color:var(--yellow)}
-  .wrap{max-width:760px;margin:0 auto;padding:24px}
-  header{text-align:center;padding:36px 0 12px}
-  header img{width:120px;height:120px;image-rendering:auto}
-  h1{margin:14px 0 4px;font-size:34px;letter-spacing:.5px}
-  .tag{color:var(--muted);margin:0}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
-  .addr{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
-  code{background:#0b0f14;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:15px}
-  .copy{cursor:pointer;background:var(--blue2);border:0;color:#fff;border-radius:8px;padding:7px 12px;font-size:14px}
-  .copy:hover{background:#1450c0}
-  .dl{display:block;text-align:center;background:var(--yellow);color:#1a1a1a;font-weight:700;
-    text-decoration:none;border-radius:12px;padding:16px;font-size:18px;margin:6px 0}
-  .dl:hover{filter:brightness(1.05)}
-  .dl small{display:block;font-weight:400;color:#3a3a1a;font-size:13px;margin-top:2px}
-  h2{font-size:20px;margin:26px 0 10px;border-left:4px solid var(--yellow);padding-left:10px}
-  ol{padding-left:22px} li{margin:8px 0}
-  .muted{color:var(--muted);font-size:14px}
-  .warn{background:#1d1710;border:1px solid #4a3a14;border-radius:10px;padding:14px 16px}
-  .req{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;color:var(--muted);font-size:14px}
-  footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 0}
-  kbd{background:#0b0f14;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Nunito",sans-serif;color:var(--white);line-height:1.65;
+    background:
+      radial-gradient(900px 500px at 85% -5%, rgba(255,207,26,.18), transparent 60%),
+      radial-gradient(700px 500px at 8% 12%, rgba(238,43,43,.16), transparent 55%),
+      linear-gradient(160deg, #0c2f78 0%, var(--navy) 38%, var(--navy-deep) 100%);
+    background-attachment:fixed;min-height:100vh;
+  }
+  /* faint dot texture overlay */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;z-index:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1.4px, transparent 1.4px);
+    background-size:26px 26px;}
+  .wrap{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:28px 22px 60px}
+  h1,h2,h3,.display{font-family:"Fredoka",sans-serif;font-weight:700;letter-spacing:.3px}
+
+  /* hero */
+  header{text-align:center;padding:42px 0 8px;animation:rise .7s ease both}
+  .ball{width:154px;height:154px;filter:drop-shadow(0 16px 28px rgba(0,0,0,.5));
+    animation:float 5s ease-in-out infinite}
+  .ball .glow{transform-box:fill-box;transform-origin:center;animation:pulse 2.6s ease-in-out infinite}
+  .ball .shine{animation:shine 6s ease-in-out infinite}
+  .ball .twk{animation:twinkle 3s ease-in-out infinite}
+  .ball .twk:nth-of-type(2){animation-delay:.7s}
+  .ball .twk:nth-of-type(3){animation-delay:1.4s}
+  h1{font-size:clamp(44px,9vw,76px);line-height:.95;margin:18px 0 6px;
+    text-shadow:0 3px 0 rgba(0,0,0,.18)}
+  .flag{display:inline-block;transform:translateY(4px)}
+  .sub{font-size:clamp(16px,2.6vw,20px);color:var(--cream);font-weight:700;opacity:.92}
+  .pill-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;padding:7px 15px;font-size:14px;font-weight:700;color:#dfe8fb}
+  .pill b{color:var(--yellow)}
+
+  /* address + download */
+  .hero-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+    border-radius:22px;padding:22px;margin:26px 0;text-align:center;backdrop-filter:blur(6px);
+    animation:rise .7s .08s ease both}
+  .addr-label{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:#aab8d8;font-weight:800}
+  .addr{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .addr code{font-family:"Nunito";font-weight:800;font-size:clamp(17px,3.4vw,22px);
+    background:var(--navy-deep);border:1px dashed rgba(255,207,26,.5);border-radius:12px;
+    padding:9px 14px;color:#fff}
+  .copy{cursor:pointer;border:0;background:var(--bright);color:#fff;font-weight:800;
+    font-family:"Nunito";border-radius:12px;padding:11px 16px;font-size:15px;transition:.15s}
+  .copy:hover{background:#1f5fd0;transform:translateY(-1px)}
+  .dl{display:inline-flex;align-items:center;gap:12px;margin-top:20px;text-decoration:none;
+    background:linear-gradient(180deg,#ffd83a,var(--yellow));color:#3a2c00;font-family:"Fredoka";
+    font-weight:700;font-size:clamp(19px,3.4vw,23px);padding:16px 30px;border-radius:18px;
+    box-shadow:0 12px 26px -8px rgba(255,207,26,.6),0 3px 0 #c89a00;transition:.18s}
+  .dl:hover{transform:translateY(-3px);box-shadow:0 18px 34px -8px rgba(255,207,26,.7),0 3px 0 #c89a00}
+  .dl .arrow{font-size:26px}
+  .dl small{display:block;font-family:"Nunito";font-weight:700;font-size:12.5px;color:#6b5500;letter-spacing:.2px}
+  .repeat{font-size:14px;color:#bccaeb;margin-top:14px}
+
+  /* steps */
+  .section-title{text-align:center;font-size:clamp(26px,5vw,34px);margin:46px 0 6px}
+  .section-sub{text-align:center;color:#bccaeb;margin-bottom:24px;font-weight:700}
+  .steps{display:flex;flex-direction:column;gap:16px}
+  .step{display:flex;gap:18px;align-items:flex-start;background:var(--white);color:var(--ink);
+    border-radius:20px;padding:20px 22px;box-shadow:var(--shadow);
+    animation:rise .6s ease both}
+  .step:nth-child(1){animation-delay:.04s}.step:nth-child(2){animation-delay:.1s}
+  .step:nth-child(3){animation-delay:.16s}.step:nth-child(4){animation-delay:.22s}
+  .num{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+    font-family:"Fredoka";font-weight:700;font-size:22px;color:#fff;
+    background:radial-gradient(circle at 50% 38%,#ff5a5a 0 48%,#fff 49% 53%,var(--white) 54% 100%);
+    box-shadow:inset 0 0 0 3px var(--ink),0 4px 10px rgba(0,0,0,.2);position:relative}
+  .num span{position:relative;z-index:2;color:var(--ink);background:#fff;border-radius:50%;
+    width:20px;height:20px;display:grid;place-items:center;font-size:13px;border:2px solid var(--ink)}
+  .step h3{font-size:20px;margin-bottom:3px;color:var(--ink)}
+  .step p{font-size:15.5px;color:#3b4763}
+  .step a:not(.mini){color:var(--bright);font-weight:800;text-decoration:none;border-bottom:2px solid rgba(47,107,224,.3)}
+  .step a:not(.mini):hover{border-color:var(--bright)}
+  .mini{display:inline-block;margin-top:10px;background:var(--bright);color:#fff;font-weight:800;
+    text-decoration:none;border-radius:11px;padding:9px 15px;font-size:14px;transition:.15s}
+  .mini:hover{background:#1f5fd0;transform:translateY(-1px)}
+  kbd{background:#eef2fb;border:1px solid #d3dcf0;border-bottom-width:2px;border-radius:6px;
+    padding:1px 7px;font-family:"Nunito";font-weight:700;font-size:13px;color:#2a3756;white-space:nowrap}
+
+  /* tips + faq */
+  .tips{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:20px;
+    padding:22px 24px;margin-top:18px}
+  .tips h3{color:var(--yellow);font-size:19px;margin-bottom:10px}
+  .tips li{margin:9px 0 9px 4px;list-style:none;padding-left:26px;position:relative;color:#dfe8fb;font-size:15px}
+  .tips li::before{content:"▸";position:absolute;left:4px;color:var(--yellow);font-weight:800}
+  .guides{display:block;text-align:center;margin-top:18px;text-decoration:none;font-family:"Fredoka";
+    font-weight:600;font-size:17px;color:#0c1730;background:linear-gradient(180deg,#fff,#eef3ff);
+    border-radius:16px;padding:16px;box-shadow:var(--shadow);transition:.16s}
+  .guides:hover{transform:translateY(-2px);box-shadow:0 22px 44px -16px rgba(0,0,0,.6)}
+  .guides b{color:var(--bright)}
+  details{background:var(--white);color:var(--ink);border-radius:16px;padding:4px 20px;margin-top:16px;box-shadow:var(--shadow)}
+  summary{cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:17px;padding:14px 0;color:var(--ink);list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"🛠️ ";}
+  details[open] summary{border-bottom:1px solid #e9edf6}
+  details p{padding:12px 0;font-size:15px;color:#3b4763}
+  footer{text-align:center;color:#aab8d8;font-size:14px;padding:36px 0 6px}
+  footer b{color:var(--yellow)}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+    background:#16a34a;color:#fff;font-weight:800;padding:12px 20px;border-radius:12px;
+    opacity:0;transition:.25s;z-index:9;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+  @keyframes pulse{0%,100%{opacity:.3;transform:scale(.9)}50%{opacity:.95;transform:scale(1.16)}}
+  @keyframes twinkle{0%,100%{opacity:.4}50%{opacity:1}}
+  @keyframes shine{0%,100%{opacity:.08}50%{opacity:.3}}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <img src="assets/ballsnia-icon.png" alt="Ballsnia">
+    <svg class="ball" viewBox="0 0 200 200" role="img" aria-label="Ballsnia Pokéball" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="bz"><circle cx="100" cy="100" r="90"/></clipPath></defs>
+      <circle cx="100" cy="100" r="96" fill="#0c1730"/>
+      <g clip-path="url(#bz)">
+        <rect x="0" y="0" width="200" height="100" fill="#0a3fa0"/>
+        <rect x="0" y="100" width="200" height="100" fill="#ffffff"/>
+        <polygon points="84,20 150,20 150,86" fill="#ffcf1a"/>
+        <g fill="#ffffff">
+          <g class="twk" transform="translate(98,33) scale(.8)"><path d="M0,-7 L1.6,-2.2 6.7,-2.2 2.6,1 4.1,6 0,3 -4.1,6 -2.6,1 -6.7,-2.2 -1.6,-2.2Z"/></g>
+          <g class="twk" transform="translate(116,51) scale(.8)"><path d="M0,-7 L1.6,-2.2 6.7,-2.2 2.6,1 4.1,6 0,3 -4.1,6 -2.6,1 -6.7,-2.2 -1.6,-2.2Z"/></g>
+          <g class="twk" transform="translate(134,69) scale(.8)"><path d="M0,-7 L1.6,-2.2 6.7,-2.2 2.6,1 4.1,6 0,3 -4.1,6 -2.6,1 -6.7,-2.2 -1.6,-2.2Z"/></g>
+        </g>
+        <ellipse class="shine" cx="60" cy="48" rx="28" ry="16" fill="#ffffff" opacity=".2"/>
+        <rect x="0" y="86" width="200" height="28" fill="#0c1730"/>
+      </g>
+      <circle class="glow" cx="100" cy="100" r="27" fill="none" stroke="#ffcf1a" stroke-width="3"/>
+      <circle cx="100" cy="100" r="24" fill="#0c1730"/>
+      <circle cx="100" cy="100" r="13" fill="#ffffff"/>
+      <circle cx="100" cy="100" r="13" fill="none" stroke="#0c1730" stroke-width="2.5"/>
+    </svg>
     <h1>Ballsnia</h1>
-    <p class="tag">🇧🇦 The Bosnian Pokémon server — Cobblemon, Create &amp; more</p>
+    <p class="sub">The Bosnian Pokémon server <span class="flag">🇧🇦</span></p>
+    <div class="pill-row">
+      <span class="pill">⚡ Cobblemon</span>
+      <span class="pill">⚙️ Create</span>
+      <span class="pill">✨ …and a few surprises</span>
+    </div>
   </header>
 
-  <div class="card addr">
-    <span class="muted">Server address:</span>
-    <code id="ip">ballsnia.jack-duffy.com:25565</code>
-    <button class="copy" onclick="navigator.clipboard.writeText('ballsnia.jack-duffy.com:25565');this.textContent='Copied!'">Copy</button>
+  <div class="hero-card">
+    <div class="addr-label">Server address</div>
+    <div class="addr">
+      <code id="ip">ballsnia.jack-duffy.com:25565</code>
+      <button class="copy" id="copyBtn">Copy</button>
+    </div>
+    <a class="dl" href="download/Ballsnia-Prism.zip" download>
+      <span class="arrow">⬇</span>
+      <span>Download the pack<small>everything's built in — just import &amp; play</small></span>
+    </a>
+    <p class="repeat">Already set up? Just launch the instance — it updates itself before the game opens.</p>
   </div>
 
-  <a class="dl" href="download/Ballsnia-Prism.zip" download>
-    ⬇ Download the Ballsnia pack
-    <small>Prism Launcher instance — auto-updates every launch</small>
-  </a>
-  <p class="req">Needs: <span>Prism Launcher</span> · <span>Java 21</span> · <span>~8&nbsp;GB RAM free</span></p>
+  <h2 class="section-title">How to join</h2>
+  <p class="section-sub">Four steps, about 10 minutes — you only do this once.</p>
 
-  <h2>Install (about 10 minutes, once)</h2>
-  <ol>
-    <li><b>Install Prism Launcher</b> — <a href="https://prismlauncher.org/">prismlauncher.org</a>. Sign in with your Microsoft/Minecraft account.</li>
-    <li><b>Install Java 21</b> — <a href="https://adoptium.net/">adoptium.net</a> (Temurin 21). In Prism: <kbd>Settings → Java → Auto-detect</kbd> and pick the Java 21 entry.</li>
-    <li><b>Download the pack</b> (button above). <b>Don't unzip it.</b></li>
-    <li><b>Import it</b> — in Prism: <kbd>Add Instance → Import → choose the ZIP</kbd>.</li>
-    <li><b>RAM is pre-set</b> to 8–10&nbsp;GB. Only if your PC has 8&nbsp;GB total, lower it: right-click → <kbd>Edit → Settings → Memory</kbd>.</li>
-    <li><b>Launch it.</b> The updater runs first — let it finish, then the game opens.</li>
-    <li><b>Join</b> — open <kbd>Multiplayer</kbd>: <b>Ballsnia is already in your server list</b>. Just select it and click <b>Join Server</b>.</li>
-  </ol>
-  <p class="muted">After this, you never re-download — just launch the instance and it auto-updates before the game opens.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num"><span>1</span></div>
+      <div>
+        <h3>Get Prism Launcher</h3>
+        <p>It's a free, friendly Minecraft launcher. Install it and sign in with your normal Microsoft/Minecraft account.</p>
+        <a class="mini" href="https://prismlauncher.org/download/" target="_blank" rel="noopener">Get Prism Launcher →</a>
+      </div>
+    </div>
 
-  <h2>Good to know</h2>
-  <ul>
-    <li><b>Distant Horizons &amp; shaders</b> are optional/client-side. Toggle them in <kbd>Edit Instance → Mods</kbd> and <kbd>Options → Video Settings → Shader Packs</kbd>. This pack uses Iris/Sodium — <b>don't install OptiFine</b>, it'll break things.</li>
-    <li><b>Pokémon on the minimap</b>: <kbd>Options → Resource Packs</kbd> → enable <b>Mini's Cobblemon Icons</b> (already included).</li>
-  </ul>
+    <div class="step">
+      <div class="num"><span>2</span></div>
+      <div>
+        <h3>Add Java 21</h3>
+        <p>The pack needs Java 21. Install it, then in Prism go to <kbd>Settings → Java → Auto-detect</kbd> and pick the Java&nbsp;21 option.</p>
+        <a class="mini" href="https://adoptium.net/temurin/releases/?version=21" target="_blank" rel="noopener">Get Java 21 →</a>
+      </div>
+    </div>
 
-  <div class="warn">
-    <b>If you get a "mod mismatch" / "incompatible mod set" error:</b> close Minecraft, open Prism,
-    launch the pack again and let the updater finish, then rejoin. Still stuck? Delete the instance and re-import the ZIP.
+    <div class="step">
+      <div class="num"><span>3</span></div>
+      <div>
+        <h3>Download &amp; import the pack</h3>
+        <p>Grab the pack with the big yellow button above (<b>don't unzip it</b>). In Prism: <kbd>Add Instance → Import → choose the ZIP</kbd>. The icon, mods and server are all built in.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num"><span>4</span></div>
+      <div>
+        <h3>Launch &amp; play</h3>
+        <p>Hit <b>Launch</b> and let the updater finish — the game opens on its own. Then open <kbd>Multiplayer</kbd>: <b>Ballsnia is already in your list</b> — click it and <b>Join</b>. 🎉</p>
+      </div>
+    </div>
   </div>
 
-  <footer>Ballsnia · made for the groupchat · you must be whitelisted to join — ask Jack</footer>
+  <div class="tips">
+    <h3>Good to know</h3>
+    <ul>
+      <li><b>Pokémon show on your minimap</b> as little icons — already switched on for hunting.</li>
+      <li><b>Shaders &amp; the huge view distance are optional.</b> Toggle them in <kbd>Options → Video</kbd> if your PC feels it. Don't install OptiFine — it breaks the pack.</li>
+      <li><b>You need to be whitelisted</b> to get in — give Jack your Minecraft username.</li>
+    </ul>
+  </div>
+
+  <a class="guides" href="guides.html">📚 New to <b>Cobblemon</b> or <b>Create</b>? — guides &amp; useful links →</a>
+
+  <details>
+    <summary>Something went wrong?</summary>
+    <p>If you see a <b>"mod mismatch"</b> or <b>"incompatible mod set"</b> message: close Minecraft, open Prism, launch the pack again and let the updater finish, then rejoin. Still stuck? Delete the instance and re-import the ZIP — your worlds and stuff on the server are safe.</p>
+  </details>
+
+  <footer>Ballsnia · made for the groupchat · address: <b>ballsnia.jack-duffy.com:25565</b></footer>
 </div>
+
+<div class="toast" id="toast">Copied! ✅</div>
+
+<script>
+  const addr = "ballsnia.jack-duffy.com:25565";
+  const toast = document.getElementById('toast');
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(addr); }
+    catch (e) {
+      const t = document.createElement('textarea'); t.value = addr; document.body.appendChild(t);
+      t.select(); document.execCommand('copy'); t.remove();
+    }
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1600);
+  });
+</script>
 </body>
 </html>
