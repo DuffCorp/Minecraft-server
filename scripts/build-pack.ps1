@@ -218,8 +218,9 @@ $ClientMods = @(
     "controlling",
     "mouse-tweaks",
     "controlify",                  # controller / gamepad support (client-side)
-    # Resource pack: Pokemon sprite icons on Xaero's minimap (enable in Options > Resource Packs)
-    "minis-cobblemon-icons"
+    # Resource packs (enable in Options > Resource Packs)
+    "minis-cobblemon-icons",       # Pokemon sprite icons on Xaero's minimap
+    "vanilla-connected-glass"      # seamless connected textures for vanilla glass + panes
 )
 
 # Server-only tools/perf (clients don't need them; keeps the client pack lean).

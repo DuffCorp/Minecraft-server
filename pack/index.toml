@@ -472,7 +472,7 @@ metafile = true
 
 [[files]]
 file = "mods/owo-lib.pw.toml"
-hash = "f6c55e6be5d2e59dcdb111f62f3f97b28cbcd118b531275b9a7872cc73b1616e"
+hash = "bbf4d6e1fe4c09ef480226f7e118796ee60fb7cf259837bc1e301711b8e263cd"
 metafile = true
 
 [[files]]
@@ -673,4 +673,9 @@ metafile = true
 [[files]]
 file = "resourcepacks/minis-cobblemon-icons.pw.toml"
 hash = "0ec93061d1be1e2123ef38e9e1e525709fc5ba4a5f10443c8d128346d31c4604"
+metafile = true
+
+[[files]]
+file = "resourcepacks/vanilla-connected-glass.pw.toml"
+hash = "911a4b6e831fbf947509b665bd216a12be0a1c270beba669559a7881c8efeb26"
 metafile = true
