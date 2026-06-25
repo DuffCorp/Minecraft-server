@@ -68,8 +68,34 @@ services:
       ALLOW_FLIGHT: "TRUE"
       ENABLE_COMMAND_BLOCK: "TRUE"
 
+      # --- RCON: internal only (port 25575 is NOT published to the internet).
+      # The backup service uses it to flush + pause saves for a clean snapshot.
+      ENABLE_RCON: "TRUE"
+      RCON_PASSWORD: "ballsnia-rcon"   # internal-only; change it if you like
+
     volumes:
       - ballsnia-data:/data
 
+  # --- Automated backups -------------------------------------------------------
+  # Tars the world every 12h, keeps 7 days. Flushes saves via RCON first so the
+  # snapshot is clean. Backups land in the ballsnia-backups volume.
+  # Restore: stop the server, extract a .tgz from that volume back into /data.
+  backups:
+    image: itzg/mc-backup
+    container_name: ballsnia-backups
+    restart: unless-stopped
+    depends_on:
+      - ballsnia
+    environment:
+      BACKUP_INTERVAL: "12h"          # how often to back up
+      PRUNE_BACKUPS_DAYS: "7"         # delete backups older than 7 days
+      INITIAL_DELAY: "3m"             # let the server finish starting first
+      RCON_HOST: "ballsnia"
+      RCON_PASSWORD: "ballsnia-rcon"  # must match the server's RCON_PASSWORD above
+    volumes:
+      - ballsnia-data:/data:ro        # the world (read-only)
+      - ballsnia-backups:/backups     # where backups are stored
+
 volumes:
   ballsnia-data:
+  ballsnia-backups:

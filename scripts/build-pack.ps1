@@ -190,8 +190,21 @@ $ServerMods = @(
     # Server performance (low-risk bundle)
     "lithium",                     # game-logic optimization
     "noisium",                     # faster worldgen
-    "servercore"                   # dynamic server-side perf tuning
+    "servercore",                  # dynamic server-side perf tuning
     # (scalablelux removed: hard-incompatible with Sable / Create: Aeronautics)
+
+    # ===== Expansion pack 3 (dimensions / adventure / building) =====
+    "eternal-starlight",           # magical starlight adventure dimension
+    "deeperdarker",                # expands Deep Dark + adds "The Otherside" dimension
+    "the-undergarden",             # forgotten underground dimension (biomes/mobs/ores)
+    "the-bumblezone",              # quirky bee dimension
+    "dimensional-dungeons",        # procedural, repeatable dungeon dimension (server-friendly)
+    "legendary-monuments",         # Cobblemon legendary-summoning structures
+    "connected-glass",             # seamless connected glass textures
+    # Combat (heavy - griefing risk on survival; see notes)
+    "scorched-guns-neoforged",     # 100+ self-contained guns incl. snipers (unofficial 1.21.1 port)
+    "nuclearism"                   # nuclear bomb + radiation (content mod; replaces bmnw, no menu mixins)
+    # bmnw removed: its title-screen SplashRenderer mixin hard-conflicts with The Aether
 )
 
 # Client-only mods (forced to side = "client" so the server skips them).
@@ -204,6 +217,7 @@ $ClientMods = @(
     "betterf3",
     "controlling",
     "mouse-tweaks",
+    "controlify",                  # controller / gamepad support (client-side)
     # Resource pack: Pokemon sprite icons on Xaero's minimap (enable in Options > Resource Packs)
     "minis-cobblemon-icons"
 )
@@ -238,10 +252,32 @@ function Add-Mods($list, $label) {
 Add-Mods $ServerMods "server + client"
 Add-Mods $ClientMods "client-only"
 
+# --- CurseForge-only mods (not on Modrinth) ----------------------------------
+# Verified: packwiz resolves these without an API key, and they allow third-party
+# distribution so the server + friends auto-download them. side defaults to both.
+$CurseForgeMods = @(
+    "the-twilight-forest",         # The Twilight Forest - adventure dimension (CF only)
+    "framework"                    # MrCrayfish's Framework - required by Scorched Guns (CF only)
+)
+if ($CurseForgeMods.Count -gt 0) {
+    Write-Host "`n==> Adding CurseForge-only mods..." -ForegroundColor Cyan
+    foreach ($slug in $CurseForgeMods) {
+        Write-Host "    + $slug" -ForegroundColor Gray
+        try {
+            & $PW curseforge add $slug -y 2>&1 | Out-Host
+            if ($LASTEXITCODE -ne 0) { throw "exit $LASTEXITCODE" }
+        } catch {
+            Write-Host "    ! could not add '$slug' from CurseForge" -ForegroundColor Yellow
+            $script:failed += $slug
+        }
+    }
+}
+
 # --- Remove mods we've intentionally dropped (cleans up earlier builds) ------
 # Tried then removed for broken deps / conflicts. Both packwiz-remove AND a file
 # delete, so re-running an old pack actually drops them. No-op on a fresh build.
 $Remove = @(
+    "bmnw",               # title-screen SplashRenderer mixin hard-conflicts with The Aether (kept Aether)
     "cobblemon-quests",   # requires FTB Quests (CurseForge-only)
     "bountiful",          # beta + undeclared kambrik dependency
     "scalablelux",        # hard-incompatible with Sable / Create: Aeronautics

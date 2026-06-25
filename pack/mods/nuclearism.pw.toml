@@ -1,0 +1,13 @@
+name = "Nuclearism"
+filename = "nuclearism-1.5Alpha-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/xPYmF1IF/versions/dgQxR0q7/nuclearism-1.5Alpha-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "0904033cb04ccfffab9312a666faff627b4d3b31d976c21353e82eb1521ec18604784444bbcb9dece6e3ba18e8ae01e15a760b4bfb9a6969e17bf8f98e6d5a4c"
+
+[update]
+[update.modrinth]
+mod-id = "xPYmF1IF"
+version = "dgQxR0q7"
