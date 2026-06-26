@@ -120,6 +120,10 @@ $ServerMods = @(
     # Transport / vehicles
     "immersive-aircraft",          # standalone planes & helicopters
     "create-aeronautics",          # Create-based aircraft (heavier; pulls Sable dep)
+    # Create Aeronautics add-on suite (all ALPHA, build on Sable - test before live)
+    "create-aeroworks",                       # gyroscopes, joysticks, servos, blocks
+    "create-aeronautics-thrusters-and-things",# thrusters, bearings, control (Gadgets & Gizmos)
+    "vs-hose-connectors",                     # transfer power/fluids/items between ships
     "small-ships",                 # sailable boats with cannons
     # Create tech add-ons
     "createaddition",              # electricity / energy bridge
@@ -258,7 +262,14 @@ Add-Mods $ClientMods "client-only"
 # distribution so the server + friends auto-download them. side defaults to both.
 $CurseForgeMods = @(
     "the-twilight-forest",         # The Twilight Forest - adventure dimension (CF only)
-    "framework"                    # MrCrayfish's Framework - required by Scorched Guns (CF only)
+    "framework",                   # MrCrayfish's Framework - required by Scorched Guns (CF only)
+    # Create Aeronautics add-on suite (CF; ALPHA; build on Sable - test before live)
+    "create-aeronauticstoolgun",              # blueprint/manipulation toolgun (exact CF mod, no hyphen)
+    "create-cardan-shafts",                   # mechanical cardan shafts
+    "create-aeronautics-transmission-linkage",# transmission & linkage
+    "create-tracks",                          # track system
+    "create-propulsion-simulated",            # propulsion (pulls Aeronautics/Sable/Create - already present)
+    "create-aeronautics-delivery-required"    # delivery quests - PULLS KubeJS+Rhino+LDLib+PonderJS
 )
 if ($CurseForgeMods.Count -gt 0) {
     Write-Host "`n==> Adding CurseForge-only mods..." -ForegroundColor Cyan

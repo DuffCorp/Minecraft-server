@@ -1,0 +1,13 @@
+name = "Create Aeronautics: Delivery Required"
+filename = "createdeliveryrequired-1.0.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "6f175ae10ab5cee2e9f3e40e0cc096ca2263c01e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8127628
+project-id = 1539794

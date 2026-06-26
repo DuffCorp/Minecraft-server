@@ -1,0 +1,13 @@
+name = "Create Aeronautics: Gadgets & Gizmos"
+filename = "createthrusters-bundled-V0.1.19.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/Sza3GgEL/versions/Z7573bkG/createthrusters-bundled-V0.1.19.jar"
+hash-format = "sha512"
+hash = "49550cf3befca1d1375a6b7af247056818d051a3ace3c110c3b83a5e7c71084a4831e5c32e22cf1c8e9e26d6d38ca1b357b21250e5e96111b451358146ab9f6a"
+
+[update]
+[update.modrinth]
+mod-id = "Sza3GgEL"
+version = "Z7573bkG"
