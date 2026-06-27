@@ -536,6 +536,11 @@ hash = "d7f360ebb9f009d6dc0b368cd8fa399bdff70c0f6ef931687b2a35137f72715d"
 metafile = true
 
 [[files]]
+file = "mods/poketwo.pw.toml"
+hash = "d640f915bc15787a1e3d4f2a7cabec76040a61069175306b01461c396780fad9"
+metafile = true
+
+[[files]]
 file = "mods/ponder.pw.toml"
 hash = "763ca3a7d927dfd1ece4d8cc2aedce1acf29614cf7d58b77234f8c748d5f7802"
 metafile = true
@@ -738,6 +743,11 @@ metafile = true
 [[files]]
 file = "mods/zeta.pw.toml"
 hash = "cb474b6c0dde741836ed4f796f3b6ab0b9d3cdc0453e651122cd002d5d1f8df8"
+metafile = true
+
+[[files]]
+file = "resourcepacks/atm-x-msd.pw.toml"
+hash = "8f1644ea7baf0bf516f375fca4aabb88ef5445f511b6096d87c5457cd3e8b237"
 metafile = true
 
 [[files]]

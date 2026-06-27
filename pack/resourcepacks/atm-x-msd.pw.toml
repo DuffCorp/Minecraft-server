@@ -1,0 +1,8 @@
+name = "atm-x-msd"
+filename = "ATM x MSD [v3.6.1].zip"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/odZZdRCE/versions/VhwUZj8K/ATM%20x%20MSD%20%5Bv3.6.1%5D.zip"
+hash-format = "sha256"
+hash = "71b97411052ad0139e53c1af316e60902b319cc77f84356692f2d94c3743d4ea"

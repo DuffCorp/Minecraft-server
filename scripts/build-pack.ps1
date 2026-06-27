@@ -140,6 +140,7 @@ $ServerMods = @(
     "create-dragons-plus",         # required library for Enchantment Industry's alpha build
     # Cobblemon add-ons
     "cobblemon-mega-showdown",     # Mega / Z-moves / Tera / Dynamax + fusions (built for 1.7.3)
+    "poketwo",                     # Lost Lore - Armored Mewtwo + Shadow Lugia/Mewtwo (NeoForge mod; needs ATM x MSD datapack)
     "cobbledollars",               # currency + NPC merchants
     "cobblemon-counter",           # KO / catch / shiny streak counters
     "cobblemon-pokenav",           # DexNav-style nearby-Pokemon tracker
@@ -283,6 +284,22 @@ if ($CurseForgeMods.Count -gt 0) {
             Write-Host "    ! could not add '$slug' from CurseForge" -ForegroundColor Yellow
             $script:failed += $slug
         }
+    }
+}
+
+# --- URL-pinned resource packs (datapack-style Cobblemon addons) -------------
+# AllTheMons x Mega Showdown is a datapack/resourcepack (no mod build), so packwiz
+# can't 'modrinth add' it. Clients get it as a RESOURCE PACK here; the SERVER gets
+# the same zip as a DATAPACK via the DATAPACKS env in docker-compose.yml. Lost Lore
+# (poketwo, in $ServerMods) needs ATM x MSD present for Mewtwo/Lugia + forms.
+$UrlResourcepacks = @(
+    @{ name = "atm-x-msd"; url = "https://cdn.modrinth.com/data/odZZdRCE/versions/VhwUZj8K/ATM%20x%20MSD%20%5Bv3.6.1%5D.zip" }
+)
+if ($UrlResourcepacks.Count -gt 0) {
+    Write-Host "`n==> Adding URL-pinned resource packs..." -ForegroundColor Cyan
+    foreach ($rp in $UrlResourcepacks) {
+        Write-Host "    + $($rp.name)" -ForegroundColor Gray
+        & $PW url add $rp.name $rp.url --meta-folder resourcepacks --force 2>&1 | Out-Host
     }
 }
 
