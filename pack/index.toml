@@ -302,7 +302,7 @@ metafile = true
 
 [[files]]
 file = "mods/create.pw.toml"
-hash = "4b0ca63279620ec9ba4c63820a9d4f9ceea9b717227137ea19e5c420c820f858"
+hash = "dcaf5f2e28db0b9a127d0167456832341045ddc9aec058c3d9fcf53f618d2404"
 metafile = true
 
 [[files]]
@@ -378,6 +378,11 @@ metafile = true
 [[files]]
 file = "mods/fusion-connected-textures.pw.toml"
 hash = "bca17b83cbe2fe972ced5bea6a423552c373492c9d19f4947fe0034263e54fe2"
+metafile = true
+
+[[files]]
+file = "mods/gears-n-kinetics.pw.toml"
+hash = "ca9a6e860a062bf02cdc222775e8adaa2c0d9a38891464eeb55a12eecef69ce4"
 metafile = true
 
 [[files]]

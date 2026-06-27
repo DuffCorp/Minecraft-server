@@ -126,6 +126,7 @@ $ServerMods = @(
     "vs-hose-connectors",                     # transfer power/fluids/items between ships
     "small-ships",                 # sailable boats with cannons
     # Create tech add-ons
+    "gears-n-kinetics",            # extra cogwheels/gears/kinetic parts (Create 6)
     "createaddition",              # electricity / energy bridge
     "create-new-age",              # power generation
     "create-power-loader",         # chunk-loading via contraptions
