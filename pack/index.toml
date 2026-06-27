@@ -751,6 +751,11 @@ hash = "8f1644ea7baf0bf516f375fca4aabb88ef5445f511b6096d87c5457cd3e8b237"
 metafile = true
 
 [[files]]
+file = "resourcepacks/bottlecaps.pw.toml"
+hash = "25ebc075f8c7d4dd0c6ebf4f57905af54834c6945e05872a740c7176efe438fb"
+metafile = true
+
+[[files]]
 file = "resourcepacks/minis-cobblemon-icons.pw.toml"
 hash = "0ec93061d1be1e2123ef38e9e1e525709fc5ba4a5f10443c8d128346d31c4604"
 metafile = true

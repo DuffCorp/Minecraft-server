@@ -295,7 +295,8 @@ if ($CurseForgeMods.Count -gt 0) {
 # the same zip as a DATAPACK via the DATAPACKS env in docker-compose.yml. Lost Lore
 # (poketwo, in $ServerMods) needs ATM x MSD present for Mewtwo/Lugia + forms.
 $UrlResourcepacks = @(
-    @{ name = "atm-x-msd"; url = "https://cdn.modrinth.com/data/odZZdRCE/versions/VhwUZj8K/ATM%20x%20MSD%20%5Bv3.6.1%5D.zip" }
+    @{ name = "atm-x-msd";   url = "https://cdn.modrinth.com/data/odZZdRCE/versions/VhwUZj8K/ATM%20x%20MSD%20%5Bv3.6.1%5D.zip" }
+    @{ name = "bottlecaps";  url = "https://cdn.modrinth.com/data/H8sPAjjY/versions/LpUeBeOr/BottleCaps%201.1.zip" }  # Silver/Gold Bottle Caps - IV hyper training (datapack; also in DATAPACKS env)
 )
 if ($UrlResourcepacks.Count -gt 0) {
     Write-Host "`n==> Adding URL-pinned resource packs..." -ForegroundColor Cyan

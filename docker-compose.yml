@@ -67,7 +67,7 @@ services:
       # itzg downloads this into the world's datapacks/ folder on boot. Clients
       # get the same zip as an auto-enabled resource pack via packwiz. Lost Lore
       # (Armored Mewtwo / Shadow Lugia) is a mod, so it arrives via PACKWIZ_URL.
-      DATAPACKS: "https://cdn.modrinth.com/data/odZZdRCE/versions/VhwUZj8K/ATM%20x%20MSD%20%5Bv3.6.1%5D.zip"
+      DATAPACKS: "https://cdn.modrinth.com/data/odZZdRCE/versions/VhwUZj8K/ATM%20x%20MSD%20%5Bv3.6.1%5D.zip,https://cdn.modrinth.com/data/H8sPAjjY/versions/LpUeBeOr/BottleCaps%201.1.zip"
       REMOVE_OLD_DATAPACKS: "TRUE"   # clean up superseded versions on update
 
       VIEW_DISTANCE: "8"

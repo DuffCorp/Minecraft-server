@@ -1,0 +1,8 @@
+name = "bottlecaps"
+filename = "BottleCaps 1.1.zip"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/H8sPAjjY/versions/LpUeBeOr/BottleCaps%201.1.zip"
+hash-format = "sha256"
+hash = "58b980a07aae01cfa915e3182adced924e5342133f8be4a1e9a9337a89701305"
