@@ -217,9 +217,7 @@ $ServerMods = @(
 $ClientMods = @(
     "sodium",
     "iris",
-    # distanthorizons intentionally NOT here - set to side="both" for server-side
-    # LOD sharing (so pre-generated/visited chunks show for everyone). To REVERT:
-    # re-add "distanthorizons" here AND set side="client" in mods/distanthorizons.pw.toml.
+    "distanthorizons",   # client-only (server-side LOD sharing tried 2026-06, too heavy on 8G -> reverted)
     "xaeros-minimap",
     "xaeros-world-map",
     "betterf3",
